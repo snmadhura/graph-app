@@ -4,10 +4,13 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "chart.js": "^2.7.2",
+    "chartjs": "^0.3.24",
     "d3": "^5.5.0",
     "datatables.net": "^1.10.19",
     "datatables.net-dt": "^1.10.19",
     "react": "^16.4.1",
+    "react-chartjs-2": "^2.7.2",
     "react-d3-basic": "^1.6.11",
     "react-d3-components": "^0.9.1",
     "react-dom": "^16.4.1",
