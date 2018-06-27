@@ -32,7 +32,10 @@ class Chart extends Component {
         chartData.datasets = response.data;
         // console.log(Object.values(chartData.datasets));
         console.log(typeof(chartData.datasets));
-
+        const mapa = Object.values(chartData.datasets);
+        const result = Object.keys(mapa).map((key) => mapa[key]);
+        console.log(mapa);
+        console.log(typeof(result))
         this.setState({
           datasets: [{
             data: Object.values(chartData.datasets)
