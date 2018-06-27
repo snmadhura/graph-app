@@ -21,27 +21,26 @@ class Chart extends Component {
           'rgba(255, 159, 64, 0.2)'
         ]
       }]
-    }
+    },
+    newChart : {}
   }
   //}
 
   updateDataHandler = () => {
     axios.get('http://www.json-generator.com/api/json/get/cfWnunPFvm?indent=2')
       .then(response => {
-        let chartData = [...this.state.chartData];
-        chartData.datasets = response.data;
+        let nchartData = [...this.state.chartData];
+        const newdata = Object.values(response.data);
+        console.log(Object.values(response.data));
+        nchartData.datasets = newdata;
         // console.log(Object.values(chartData.datasets));
-        console.log(typeof(chartData.datasets));
-        const mapa = Object.values(chartData.datasets);
-        const result = Object.keys(mapa).map((key) => mapa[key]);
-        console.log(mapa);
-        console.log(typeof(result))
-        this.setState({
-          datasets: [{
-            data: Object.values(chartData.datasets)
-          }]
-        });
-       // console.log(this.state.chartData);
+        //console.log(chartData.datasets);
+        //const mapa = Object.values(chartData.datasets);
+        //const result = Object.values(mapa).map((key) => mapa[key]);
+
+        console.log(nchartData);
+        this.setState({nchartData});
+        //console.log(this.state.chartData.datasets[0].data);
       })
   }
   render() {
