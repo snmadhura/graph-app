@@ -21,14 +21,16 @@ class Chart extends Component {
           'rgba(255, 159, 64, 0.2)'
         ]
       }]
-    },
-    newChart : {}
+    }
   }
   //}
 
   updateDataHandler = () => {
+    
+    console.log(this.state.chartData);
     axios.get('http://www.json-generator.com/api/json/get/cfWnunPFvm?indent=2')
       .then(response => {
+        
         let nchartData = [...this.state.chartData];
         const newdata = Object.values(response.data);
         console.log(Object.values(response.data));
@@ -39,18 +41,15 @@ class Chart extends Component {
         //const result = Object.values(mapa).map((key) => mapa[key]);
 
         console.log(nchartData);
-        this.setState({nchartData});
-        //console.log(this.state.chartData.datasets[0].data);
+        this.setState({chartData:nchartData});
+        console.log(this.state.chartData);
       })
   }
   render() {
     return (
       <div className="chart">
         <Bar
-          data={this.state.chartData}
-          options={{
-            maintainAspectRatio: false
-          }}
+        data={this.state.chartData}
         />
 
         <button onClick={this.updateDataHandler}>Update Data</button>
