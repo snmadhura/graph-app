@@ -30,24 +30,41 @@ class Chart extends Component {
     this.updateDataHandler = () => {
     
       console.log(this.state.chartData);
-      axios.get('http://www.json-generator.com/api/json/get/cgvqxfSAAy?indent=2')
+      axios.get('http://www.json-generator.com/api/json/get/cfyJVWPuUO?indent=2')
         .then(response => {
+          console.log(response.data);
+          let newdata = (response.data).map(i => {
+            return response.data[i.x];
+          });
           
+          console.log(newdata);
           let chartData = {...this.state.chartData};
-          //console.log(chartData);
           //const newdata = response.data;
           // console.log(Object.values(response.data));
-          chartData.datasets.data = [3, 1, 3, 5, 2, 1];
+          //chartData.datasets.data = [3, 1, 3, 5, 2, 1];
           // this.setState(this.state);
           // console.log(Object.values(chartData.datasets));
           //console.log(chartData.datasets);
           //const mapa = Object.values(chartData.datasets);
           //const result = Object.values(mapa).map((key) => mapa[key]);
-  
-          // console.log(chartData);
-       this.setState({chartData});
-           console.log(this.state.chartData);
-          
+          chartData.datasets.pop();
+        //  chartData.labels.pop();
+          chartData.datasets.push({
+            //data: [10, 5, 8, 10, 2, 10]
+            label: '# of Votes',
+        data: [10, 5, 8, 10, 2, 10],
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)'
+        ]
+          });
+          this.setState(this.state);
+          //chartData.update();
+         
      // console.log(chartData.datasets);
         })
     }
