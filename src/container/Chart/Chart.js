@@ -33,11 +33,12 @@ class Chart extends Component {
       axios.get('http://www.json-generator.com/api/json/get/cfyJVWPuUO?indent=2')
         .then(response => {
           console.log(response.data);
-          let newdata = (response.data).map(i => {
-            return response.data[i.x];
+          const dataarray = [];
+          let newdata = (response.data).map((i,index) => {
+            dataarray.push(i.x);
           });
           
-          console.log(newdata);
+          console.log(dataarray);
           let chartData = {...this.state.chartData};
           //const newdata = response.data;
           // console.log(Object.values(response.data));
@@ -52,7 +53,7 @@ class Chart extends Component {
           chartData.datasets.push({
             //data: [10, 5, 8, 10, 2, 10]
             label: '# of Votes',
-        data: [10, 5, 8, 10, 2, 10],
+        data: [9, 6, 5, 9, 12, 9],
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
           'rgba(54, 162, 235, 0.2)',
